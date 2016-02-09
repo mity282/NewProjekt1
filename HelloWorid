@@ -8,8 +8,8 @@ public class HelloWorld {
 
         System.out.println("Длина строки " + st.length() + " символов");
 
-        String st1 = st.substring(0, 31);
-        String st2 = st.substring(31, 63);
+        String st1 = st.substring(0, st.length() / 2);
+        String st2 = st.substring(st.length() / 2);
 
         System.out.println(st1);
         System.out.println(st2);
