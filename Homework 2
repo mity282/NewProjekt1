@@ -1,0 +1,30 @@
+public class name {
+    public static void main(String[] args) {
+
+        // Задание №2,1
+
+        int[] name = {5, 8, 10, 3, 7, 8, 15, 3, 9, 1};
+        int minValue = name[0];
+
+        for(int i = 0; i < name.length; i++){
+            if(minValue > name[i])
+                minValue = name[i];
+        }
+        System.out.println("Минимальное значение в массиве = " + minValue);
+
+        int maxValue = name[0];
+        for(int j = 0; j < name.length; j++){
+            if(maxValue < name[j])
+                maxValue = name[j];
+        }
+        System.out.println("Максимальное значение в массиве = " + maxValue);
+
+        for(int f = 0; f < name.length; f++) {
+            if (minValue == name[f])
+                name[f] = 0;
+            else if (maxValue == name[f])
+                name[f] = 99;
+
+            System.out.print(name[f] + ", ");
+        }
+        System.out.println();
