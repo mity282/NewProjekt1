@@ -1,0 +1,102 @@
+import java.util.Scanner;
+public class HelloWorld {
+
+    public static void main(String[] args) {
+
+        Pacient[] arrayPacient = new Pacient[2];
+
+            for (int i = 0; i < arrayPacient.length; i++) {
+
+                Scanner scanner = new Scanner(System.in);
+
+                    System.out.print("Введите Имя: ");
+                    String name = scanner.nextLine();
+                if(scanner.hasNext(name)) {
+                    arrayPacient[i].setName(name);
+                    name = arrayPacient[i].getName();
+                }
+
+                    System.out.print("Причина посещения: ");
+                    String visitReason = scanner.next();
+                if(scanner.hasNext(visitReason)) {
+                    arrayPacient[i].setVisitReason(visitReason);
+                    visitReason = arrayPacient[i].getVisitReason();
+                }
+
+                System.out.print("Возраст: ");
+                Integer age = scanner.nextInt();
+                if(scanner.hasNextInt(age)) {
+                    arrayPacient[i].setAge(age);
+                    age = arrayPacient[i].getAge();
+                }
+
+                System.out.print("Наличие диспансеризации (Yes; No): ");
+                String dispensary = scanner.nextLine();
+                if(scanner.hasNext(dispensary)) {
+                    arrayPacient[i].setDispensary(dispensary);
+                    dispensary = arrayPacient[i].getDispensary();
+                    System.out.print(arrayPacient[i].getDispensary());
+                }
+                String dispY = "Yes";
+                boolean disp;
+                    if (dispensary.equals(dispY)) {
+                        disp = true;
+                    } else {
+                        disp = false;
+                    }
+
+
+                System.out.println();
+
+
+                System.out.println("Имя пациента: " + name);
+                System.out.println("Возраст пациента: " + age);
+                System.out.println("Диспансерный учет: " + disp);
+
+                System.out.println();
+
+                if (i == arrayPacient.length-1) {
+                    for (i = 0; i < arrayPacient.length; i++) {
+                        System.out.println("Имя пациента: " + name);
+                        System.out.println("Возраст пациента: " + age);
+                        System.out.println("Диспансерный учет: " + disp);
+                    }
+
+
+                    System.out.print("Найти пациента: по имени - нажмите 1; по году - нажмите 2 ");
+                    int uot = scanner.nextInt();
+                    int a = 1;
+
+                    if (uot == a) ;
+                    {
+                        System.out.print("Введите имя: ");
+                        String votName = scanner.next();
+
+                        if (votName.equals(name)) {
+                            System.out.println("Имя пациента: " + name);
+                            System.out.println("Возраст пациента: " + age);
+                            System.out.println("Диспансерный учет: " + disp);
+                        } else {
+                            System.out.println("Нет такого пациента!");
+                        }
+                    }
+                    if (uot != a) ;
+                    {
+                        System.out.print("Введите возраст: ");
+                        int uotNam = scanner.nextInt();
+                        if (uotNam == age) {
+                            System.out.println("Имя пациента: " + name);
+                            System.out.println("Возраст пациента: " + age);
+                            System.out.println("Диспансерный учет: " + disp);
+                        } else {
+                            System.out.println("Нет такого пациента!");
+                        }
+                    }
+                }
+
+
+                }
+
+            }
+
+    }
