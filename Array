@@ -1,0 +1,103 @@
+import java.lang.reflect.Array;
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+
+        Figura figura = null;
+
+        Scanner a = new Scanner(System.in);
+        double st = a.nextInt();
+
+        if (st == 0)
+        {
+            Scanner b = new Scanner(System.in);
+            Double dlinaTr = b.nextDouble();
+            Scanner c = new Scanner(System.in);
+            Double visotaTr = c.nextDouble();
+         }
+        else if (st == 1){
+            Scanner e = new Scanner(System.in);
+            Double dlinaKv = e.nextDouble();
+        }
+        else {
+            Scanner f = new Scanner(System.in);
+            Double dlinaPr = f.nextDouble();
+            Scanner g = new Scanner(System.in);
+            Double visotaPr = g.nextDouble();
+        }
+
+        System.out.println(figura.area());
+
+
+    }
+}
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+public abstract class Figura {
+
+
+    public abstract double area();
+
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+public class Treugolnik extends Figura {
+
+    private double dlinaTr;
+    private double visotaTr;
+
+    public Treugolnik() {
+        this.dlinaTr = dlinaTr;
+        this.visotaTr = visotaTr;
+    }
+
+    @Override
+    public double area() {
+
+    return ((1 / 2) * dlinaTr * visotaTr);
+    }
+}
+
+/////////////////////////////////////////////////////////////////////////////////////
+
+public class Kvadrat extends Figura {
+
+    private double dlinaKv;
+
+    public Kvadrat(double dlinaKv) {
+        this.dlinaKv = dlinaKv;
+    }
+
+    @Override
+    public double area(){
+
+
+
+       return (dlinaKv * dlinaKv);
+}
+
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+
+public class Prjamougolnik extends Figura {
+
+    private double dlinaPr;
+    private double visotaPr;
+
+    public Prjamougolnik(double dlinaPr, double visotaPr) {
+        this.dlinaPr = dlinaPr;
+        this.visotaPr = visotaPr;
+    }
+
+    @Override
+    public double area() {
+
+        return dlinaPr * visotaPr;
+    }
+
+    }
