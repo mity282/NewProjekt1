@@ -1,102 +1,80 @@
+// Рабочая версия.
+// Не уверен в правильности 
+
+import java.util.Objects;
 import java.util.Scanner;
+
 public class HelloWorld {
 
     public static void main(String[] args) {
 
-        Pacient[] arrayPacient = new Pacient[2];
 
+        Pacient arrayPacient[] = new Pacient[3];
+        
+        // Без этих переменных программа работать не хочет, не записываются вводимые параметры в память
+        // под номером массива.
+        String namName[] = new String[3]; 
+        String namVisit[] = new String[3];
+        Integer namAge[] = new Integer[3];
+
+
+
+        for (int i = 0; i < arrayPacient.length; i++) {
+
+            Scanner scanner = new Scanner(System.in);
+            System.out.print("Введите Имя: ");
+            String name = scanner.nextLine(); 
+            namName[i] = name;
+
+            Scanner scan = new Scanner(System.in);
+            System.out.print("Причина посещения: ");
+            String visitReason = scan.nextLine();
+            namVisit[i] = visitReason;
+
+            Scanner scane = new Scanner(System.in);
+            System.out.print("Возраст: ");
+            Integer age = scane.nextInt();
+            namAge[i] = age;
+
+
+        }
+
+        for (int i = 0; i < arrayPacient.length; i++) {
+            System.out.println("ФИО: " + namName[i] + '\n' + "Причина посещения: " + namVisit[i] +
+                    '\n' + "Возраст: " + namAge[i] + '\n' + "Находится на диспансерном учете: " + '\n');
+        }
+
+        Scanner sc = new Scanner(System.in);
+        System.out.println('\n' + "Найти пациента: '\n' по имени - введите 1,'\n' по возрасту - введите 2." + '\n');
+        Integer a = sc.nextInt();
+
+        if (a == 1) {
+
+            Scanner scanner = new Scanner(System.in);
+            System.out.print('\n' + "Введите Имя: ");
+            String name = scanner.nextLine();
             for (int i = 0; i < arrayPacient.length; i++) {
-
-                Scanner scanner = new Scanner(System.in);
-
-                    System.out.print("Введите Имя: ");
-                    String name = scanner.nextLine();
-                if(scanner.hasNext(name)) {
-                    arrayPacient[i].setName(name);
-                    name = arrayPacient[i].getName();
+                if (Objects.equals(name, namName[i])) {
+                    System.out.print('\n' + namName[i] + " " + namVisit[i] + " " + namAge[i]);
+                } else {
+                    System.out.println("Нет такого пациента!");
                 }
-
-                    System.out.print("Причина посещения: ");
-                    String visitReason = scanner.next();
-                if(scanner.hasNext(visitReason)) {
-                    arrayPacient[i].setVisitReason(visitReason);
-                    visitReason = arrayPacient[i].getVisitReason();
-                }
-
-                System.out.print("Возраст: ");
-                Integer age = scanner.nextInt();
-                if(scanner.hasNextInt(age)) {
-                    arrayPacient[i].setAge(age);
-                    age = arrayPacient[i].getAge();
-                }
-
-                System.out.print("Наличие диспансеризации (Yes; No): ");
-                String dispensary = scanner.nextLine();
-                if(scanner.hasNext(dispensary)) {
-                    arrayPacient[i].setDispensary(dispensary);
-                    dispensary = arrayPacient[i].getDispensary();
-                    System.out.print(arrayPacient[i].getDispensary());
-                }
-                String dispY = "Yes";
-                boolean disp;
-                    if (dispensary.equals(dispY)) {
-                        disp = true;
-                    } else {
-                        disp = false;
-                    }
+            }
+        }
 
 
-                System.out.println();
+        if (a == 2) {
 
-
-                System.out.println("Имя пациента: " + name);
-                System.out.println("Возраст пациента: " + age);
-                System.out.println("Диспансерный учет: " + disp);
-
-                System.out.println();
-
-                if (i == arrayPacient.length-1) {
-                    for (i = 0; i < arrayPacient.length; i++) {
-                        System.out.println("Имя пациента: " + name);
-                        System.out.println("Возраст пациента: " + age);
-                        System.out.println("Диспансерный учет: " + disp);
-                    }
-
-
-                    System.out.print("Найти пациента: по имени - нажмите 1; по году - нажмите 2 ");
-                    int uot = scanner.nextInt();
-                    int a = 1;
-
-                    if (uot == a) ;
-                    {
-                        System.out.print("Введите имя: ");
-                        String votName = scanner.next();
-
-                        if (votName.equals(name)) {
-                            System.out.println("Имя пациента: " + name);
-                            System.out.println("Возраст пациента: " + age);
-                            System.out.println("Диспансерный учет: " + disp);
-                        } else {
-                            System.out.println("Нет такого пациента!");
-                        }
-                    }
-                    if (uot != a) ;
-                    {
-                        System.out.print("Введите возраст: ");
-                        int uotNam = scanner.nextInt();
-                        if (uotNam == age) {
-                            System.out.println("Имя пациента: " + name);
-                            System.out.println("Возраст пациента: " + age);
-                            System.out.println("Диспансерный учет: " + disp);
-                        } else {
-                            System.out.println("Нет такого пациента!");
-                        }
-                    }
-                }
-
-
-                }
-
+            Scanner sca = new Scanner(System.in);
+            System.out.print('\n' + "Введите возраст: ");
+            Integer age = sca.nextInt();
+            for (int i = 0; i < arrayPacient.length; i++) {
+                if (age == namAge[i])
+                    System.out.print('\n' + namName[i] + " " + namVisit[i] + " " + namAge[i]);
             }
 
+        }
+
     }
+}
+
