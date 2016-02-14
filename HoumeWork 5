@@ -1,0 +1,443 @@
+// Как и в других ДЗ не получилось вывести введенные данные. На печать выводятся все наследуемые классы только вместо данных напмсано NULL
+
+// Класс Tehnika void
+
+import Teh.Plit.Elektric;
+import Teh.Plit.Gaz;
+import Teh.Plita;
+import Teh.Tel.LCD;
+import Teh.Tel.Plazma;
+import Teh.Telef.Analogovij;
+import Teh.Telef.Mobile;
+
+import java.util.Scanner;
+
+/**
+ * Created by admin on 14.02.2016.
+ */
+public class Tehnika {
+    public static void main(String[] args) {
+
+
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Введите наименование техники: телефон; телевизор; плита.");
+        String vvod = sc.next(); //Выбираем технику
+        //присваиваем значение переменной
+        String telefon = "телефон";
+        String televizor = "телевизор";
+        String plita = "плита";
+        //если есть совпадение....
+        if (telefon.equals(vvod)) {
+            String telefon1 = "мобильный";
+            String telefon2 = "аналоговый";
+
+            Scanner scMob = new Scanner(System.in);
+            System.out.println("Введите тип телефона: мобильный или аналоговый.");
+            vvod = scMob.next();
+
+            if (telefon1.equals(vvod)) {
+                Mobile mob = new Mobile();
+                System.out.println(mob.toString());
+            } else if (telefon2.equals(vvod)) {
+                Analogovij mob = new Analogovij();
+                System.out.println(mob.toString());
+            }
+        } else if (televizor.equals(vvod)) {
+            String lcd = "жки";
+            String plaz = "плазма";
+
+            Scanner sсTv = new Scanner(System.in);
+            System.out.println("Введите тип телевизора: жки или плазма.");
+            vvod = sсTv.next();
+
+            if (lcd.equals(vvod)) {
+                LCD mob = new LCD();
+                System.out.println(mob.toString());
+            } else if (plaz.equals(vvod)) {
+                Plazma mob = new Plazma();
+                System.out.println(mob.toString());
+            }
+        } else if (plita.equals(vvod)) {
+            String gaz = "газовая";
+            String elekt = "электрическая";
+
+            Scanner sсTv = new Scanner(System.in);
+            System.out.println("Введите тип плиты: газовая или электрическая:");
+            vvod = sсTv.next();
+
+            if (gaz.equals(vvod)) {
+                Gaz mob = new Gaz();
+                System.out.println(mob.toString());
+            } else if (elekt.equals(vvod)) {
+                Elektric mob = new Elektric();
+                System.out.println(mob.toString());
+            }
+        }
+    }
+
+}
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////
+  // Пакет Teh
+  // Класс Plita
+  package Teh;
+
+import java.util.Scanner;
+
+/**
+ * Created by admin on 14.02.2016.
+ */
+public class Plita extends Rozetka {
+
+    private String nagrElement;
+
+    {
+
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Введите колличество нагревательных элементов. ");
+        String nagrElement = sc.next();
+    }
+
+
+    public Plita(String nagrElement) {
+        this.nagrElement = nagrElement;
+    }
+
+    public Plita() {
+
+    }
+
+    @Override
+    public String toString() {
+        return "Plita{" +
+                "nagrElement='" + nagrElement + '\'' +
+                '}' + super.toString();
+    }
+}
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  // Пакет Teh
+// Класс Rozetka
+package Teh;
+
+/**
+ * Created by admin on 14.02.2016.
+ */
+public class Rozetka {
+
+    private String onn;
+
+    {
+        System.out.println("В розетку включено!");
+    }
+
+    public Rozetka(String onn) {
+        this.onn = onn;
+
+    }
+
+    public Rozetka() {
+    }
+
+    @Override
+    public String toString() {
+        return "Rozetka{" +
+                "onnOf='" + onn + '\'' +
+                '}';
+    }
+}
+///////////////////////////////////////////////////////////////////////////////////////////////////
+  // Пакет Teh
+// Класс Telefon
+package Teh;
+
+import java.util.Scanner;
+
+/**
+ * Created by admin on 14.02.2016.
+ */
+public class Telefon {
+    private String colourTel;
+
+    {
+
+
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Введите цвет телефона: ");
+        String colourTel = sc.next();
+    }
+
+    public Telefon(String colourTel) {
+        this.colourTel = colourTel;
+    }
+
+    public Telefon() {
+
+    }
+
+    @Override
+    public String toString() {
+        return "Telefon{" +
+                "colourTel='" + colourTel + '\'' +
+                '}';
+    }
+}
+////////////////////////////////////////////////////////////////////////////////////////////////
+  // Пакет Teh
+// Класс TV
+package Teh;
+
+/**
+ * Created by admin on 14.02.2016.
+ */
+public class TV extends Rozetka {
+    private String diagonal;
+
+    public TV(String diagonal) {
+        this.diagonal = diagonal;
+    }
+
+    public TV() {
+
+    }
+
+    @Override
+    public String toString() {
+        return "TV{" +
+                "diagonal='" + diagonal + '\'' +
+                '}' + super.toString();
+    }
+}
+//////////////////////////////////////////////////////////////////////////////////////////
+  // Пакет Teh
+/////Пакет Plit
+/////Класс Elektrik
+package Teh.Plit;
+
+import java.util.Scanner;
+
+/**
+ * Created by admin on 14.02.2016.
+ */
+public class Elektric {
+    private String power;
+
+    {
+
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Введите мощность: ");
+        String power = sc.next();
+    }
+
+    public Elektric() {
+
+    }
+
+    @Override
+    public String toString() {
+        return "Elektric{" +
+                "power='" + power + '\'' +
+                '}' + super.toString();
+    }
+
+    public Elektric(String power) {
+        this.power = power;
+    }
+}
+//////////////////////////////////////////////////////////////////////////////////
+  // Пакет Teh
+/////Пакет Plit
+//////Класс Gaz
+package Teh.Plit;
+
+import Teh.Plita;
+
+import java.util.Scanner;
+
+/**
+ * Created by admin on 14.02.2016.
+ */
+public class Gaz extends Plita {
+
+    private String elektPodjig;
+
+    {
+
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Электроподжиг: да, нет. ");
+        String elektPodjig = sc.next();
+    }
+
+
+    public Gaz(String nagrElement, String elektPodjig) {
+        super(nagrElement);
+        this.elektPodjig = elektPodjig;
+    }
+
+    public Gaz() {
+        super();
+    }
+
+    @Override
+    public String toString() {
+        return "Gaz{" +
+                "elektPodjig='" + elektPodjig + '\'' +
+                '}' + super.toString();
+    }
+
+}
+/////////////////////////////////////////////////////////////////////////////
+  // Пакет Teh
+////Пакет Tel
+////Класс LCD
+package Teh.Tel;
+
+import Teh.TV;
+
+import java.util.Scanner;
+
+/**
+ * Created by admin on 14.02.2016.
+ */
+public class LCD extends TV {
+
+
+    private String razreshenie;
+
+    {
+
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Введите разрешение экрана: ");
+        String razreshenie = sc.next();
+    }
+
+
+    public LCD(String diagonal, String razreshenie) {
+        super(diagonal);
+        this.razreshenie = razreshenie;
+    }
+
+    public LCD() {
+
+    }
+
+    @Override
+    public String toString() {
+        return "LCD{" +
+                "razreshenie='" + razreshenie + '\'' +
+                '}' + super.toString();
+    }
+}
+//////////////////////////////////////////////////////////////////////////////////////////////
+  // Пакет Teh
+////Пакет Tel
+////Класс Plazma
+package Teh.Tel;
+
+import Teh.TV;
+
+import java.util.Scanner;
+
+/**
+ * Created by admin on 14.02.2016.
+ */
+public class Plazma extends TV {
+
+    private String tolchena;
+
+    {
+
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Введите толщину панели: ");
+        String tolchena = sc.next();
+    }
+
+    public Plazma(String diagonal, String tolchena) {
+        super(diagonal);
+        this.tolchena = tolchena;
+    }
+
+    public Plazma() {
+
+    }
+
+    @Override
+    public String toString() {
+        return "Plazma{" +
+                "tolchena='" + tolchena + '\'' +
+                '}' + super.toString();
+    }
+}
+/////////////////////////////////////////////////////////////////////////////////////
+  // Пакет Teh
+////Пакет Telef
+////Класс Analogovij
+package Teh.Telef;
+
+import Teh.Telefon;
+
+import java.util.Scanner;
+
+/**
+ * Created by admin on 14.02.2016.
+ */
+public class Analogovij extends Telefon {
+    public Analogovij(String colourTel) {
+        super(colourTel);
+
+    }
+
+    private String vvodNomera;
+
+    {
+
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Ввод номера: барабаный или кнопочный. ");
+        String vvodNomera = sc.next();
+    }
+
+    public Analogovij() {
+
+    }
+
+    @Override
+    public String toString() {
+        return "Analogovij{" +
+                "vvodNomera='" + vvodNomera + '\'' +
+                '}' + super.toString();
+    }
+}
+////////////////////////////////////////////////////////////////////////////////////////////////
+  // Пакет Teh
+////Пакет Telef
+////Класс Mobile
+package Teh.Telef;
+
+import Teh.Telefon;
+
+import java.util.Scanner;
+
+/**
+ * Created by admin on 14.02.2016.
+ */
+public class Mobile extends Telefon {
+
+    private String size;
+
+    {
+
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Введите размер экрана: ");
+        String size = sc.next();
+    }
+
+
+    @Override
+    public String toString() {
+        return "Mobile{" +
+                "sizeEkran='" + size + '\'' +
+                '}' + super.toString();
+    }
+
+}
+
+////////////// END  /////////////////////
