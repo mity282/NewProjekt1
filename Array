@@ -1,30 +1,36 @@
-import java.lang.reflect.Array;
 import java.util.Scanner;
 
-public class Main {
+/**
+ * Created by admin on 13.02.2016.
+ */
+public class MainFig {
+
+
     public static void main(String[] args) {
 
         Figura figura = null;
 
-        Scanner a = new Scanner(System.in);
-        double st = a.nextInt();
 
-        if (st == 0)
-        {
+        Scanner a = new Scanner(System.in);
+        double st = a.nextDouble();
+
+        if (st == 0) {
             Scanner b = new Scanner(System.in);
             Double dlinaTr = b.nextDouble();
             Scanner c = new Scanner(System.in);
             Double visotaTr = c.nextDouble();
-         }
-        else if (st == 1){
+            figura = new Treugolnik (dlinaTr, visotaTr);
+
+            } else if (st == 1) {
             Scanner e = new Scanner(System.in);
             Double dlinaKv = e.nextDouble();
-        }
-        else {
+            figura = new Kvadrat (dlinaKv);
+        } else {
             Scanner f = new Scanner(System.in);
             Double dlinaPr = f.nextDouble();
             Scanner g = new Scanner(System.in);
             Double visotaPr = g.nextDouble();
+            figura = new Prjamougolnik (dlinaPr, visotaPr);
         }
 
         System.out.println(figura.area());
@@ -58,7 +64,7 @@ public class Treugolnik extends Figura {
     @Override
     public double area() {
 
-    return ((1 / 2) * dlinaTr * visotaTr);
+    return (1 / 2) * dlinaTr * visotaTr;
     }
 }
 
