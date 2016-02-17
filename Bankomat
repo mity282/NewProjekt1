@@ -1,0 +1,99 @@
+import java.util.Scanner;
+
+/**
+ * Created by admin on 16.02.2016.
+ */
+public class Bankomat {
+
+    public static void main(String[] args) {
+
+        Scanner scx = new Scanner(System.in);
+        System.out.println("Указать колличество вносимых купюр по 100р:");
+        Integer x = scx.nextInt();
+        Scanner scy = new Scanner(System.in);
+        System.out.println("Указать колличество вносимых купюр по 50p:");
+        Integer y = scy.nextInt();
+        Scanner scz = new Scanner(System.in);
+        System.out.println("Указать колличество вносимых купюр по 20p:");
+        Integer z = scz.nextInt();
+        Vidocha.vidacha(x, y, z);
+
+        Vidocha vidocha = null;
+
+        // Vidocha vidocha = new Vidocha(1000, 300); Запись если ввод не с консоли
+
+        Scanner a = new Scanner(System.in);
+        System.out.println("Внесите сумму на счет!");
+        Integer kash = a.nextInt();
+        Scanner b = new Scanner(System.in);
+        System.out.println("Какую сумму хотите снять");
+        Integer apKash = b.nextInt();
+        vidocha = new Vidocha(kash, apKash);
+
+
+        System.out.println();
+    }
+}
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+import java.util.Scanner;
+
+
+public class Vidocha {
+    private static int kash;// Сумма на счету
+    public static int apKash; // Сумма которую необходимо снять
+    public static int nalKash; // Сумма которая снимается
+
+
+    public Vidocha(Integer kash, Integer apKash) {
+    }
+
+    public static int vidacha(int x, int y, int z) {
+
+        nalKash = 0;
+
+        int sum100[] = new int[x];
+        int sum50[] = new int[y];
+        int sum20[] = new int[z];
+
+        int nal100 = 100;
+        int nal50 = 50;
+        int nal20 = 20;
+
+        int i;
+        int j;
+        int k;
+
+        for (i = 1; i < sum100.length - 2; i++) {
+            if (kash > 100) {
+                kash -= nal100;
+                apKash -= nal100;
+                nalKash += nal100;
+
+                x -= 1;
+            }
+        }
+        for (j = 0; j < sum50.length - 2; j++) {
+            if (apKash > 0) {
+                if (kash > 50) {
+                    kash -= nal50;
+                    apKash -= nal50;
+                    nalKash += nal50;
+                    y -= 1;
+                }
+            }
+        }
+        for (k = 0; k < sum20.length; k++) {
+            if (apKash > 0) {
+                if (kash > 20) {
+                    kash -= nal20;
+                    apKash -= nal20;
+                    nalKash += nal20;
+                    z -= 1;
+
+                }
+            }
+
+        }
+        return nalKash;
+    }
+}
