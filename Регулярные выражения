@@ -1,0 +1,22 @@
+public class HelloWorld {
+    public static void main(String[] args) {
+
+
+        String number1, number2;
+        String esp = " ";
+        String cheng;
+
+        String namb ="+375 33 707-29-17";
+        number1 = namb.replaceAll("-", "");
+        number2  = number1.replaceAll(" ", "");
+        System.out.println(number2);
+
+        Pattern pattern = Pattern.compile("\\+375(29|33|44)\\d{7}");
+        Matcher matcher = pattern.matcher(number2);
+        if (matcher.find()){
+            System.out.println("Нашли!!!");
+        }
+    }
+  }
+  
+  
