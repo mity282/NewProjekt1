@@ -18,5 +18,27 @@ public class HelloWorld {
         }
     }
   }
+  //////////////////////////////////////////////////////////////////////////////////////////////////
+  
+     public static void main(String[] args) {
+
+
+        String number1 = "gjvbgfdvytg.xml";
+        String cheng;
+
+        String number2 = number1.substring(number1.lastIndexOf('.')+1);
+        System.out.println(number2);
+
+
+        String xml = "xml";
+        String json = "json";
+        if (number2.equals(xml) || number2.equals(json)) {
+            System.out.println("Совпадает");
+        }else{
+            System.out.println("Другй тип файла");
+        }
+
+    }
+}
   
   
