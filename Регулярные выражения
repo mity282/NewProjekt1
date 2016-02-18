@@ -40,5 +40,39 @@ public class HelloWorld {
 
     }
 }
+
+///// 2-ой вариант xml. json ///////////////////
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+/**
+ * Created by admin on 17.02.2016.
+ */
+public class HelloWorld {
+    public static void main(String[] args) {
+        System.out.println(myTest("jhbvrt.xml"));
+        System.out.println(myTest("jhbvrt.json"));
+        System.out.println(myTest("jhbvrt.txt"));
+
+        System.out.println(boolTest("hjgh.xml"));
+        System.out.println(boolTest("gcv.json"));
+        System.out.println(boolTest("jhbvrt.txt"));
+    }
+
+        public static String myTest(String number){
+           String number1 = number.substring(number.lastIndexOf('.')+1);
+            return number1;
+        }
+
+    public static boolean boolTest(String number){
+        Pattern pattern = Pattern.compile("^\\w+.(xml|json)$");
+        Matcher matcher = pattern.matcher(number);
+
+        return matcher.matches();
+    }
+
+}
+
   
   
