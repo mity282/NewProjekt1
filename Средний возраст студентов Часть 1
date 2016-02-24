@@ -1,0 +1,62 @@
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Scanner;
+
+/**
+ * Created by admin on 22.02.2016.
+ */
+public class Student {
+    String name;
+    String surname;
+    Date date;
+
+    public static void main(String[] args) throws ParseException {
+        Student stu = new Student();
+
+        String namName[] = new String[3];
+        String namSurname[] = new String[3];
+        String namDateStr[] = new String[3];
+        int i;
+
+        String[] stud = new String[3];
+        for (i = 0; i < stud.length; i++) {
+            Scanner n = new Scanner(System.in);
+            System.out.print("Введите имя: ");
+            stu.name = n.next();
+            Scanner s = new Scanner(System.in);
+            System.out.print("Введите фамилию: ");
+            stu.surname = s.next();
+            Scanner d = new Scanner(System.in);
+            System.out.print("Введите дату рождения dd MM yyyy: ");
+            String dateStr = d.nextLine();
+
+
+            namName[i] = stu.name;
+            namSurname[i] = stu.surname;
+            namDateStr[i] = dateStr;
+
+
+        }
+        long dateSeve = 0;
+        for (i = 0; i < stud.length; i++) {
+            SimpleDateFormat format = new SimpleDateFormat("dd MM yyyy");
+            Date date = format.parse(namDateStr[i]); //Переводим число в дату
+            long dateLong = date.getTime(); //Получаем дату рождения в милисекундах
+            Date nowDate = new Date();
+            long nowDateLong = nowDate.getTime(); //Получаем нынешнюю дату в милисекудах
+            long dateDif = nowDateLong - dateLong; //Находим разность милисекунд
+
+            dateSeve += dateDif;
+        }
+        long average = dateSeve / stud.length; //Находим среднее количество миллисекунд
+        long yearsOfMilsek = 31536000000l; //количество миллисекунд в году
+        long years = average / yearsOfMilsek;
+        long monthOfMilsek = 2592000000l; //колличество миллисекунд в месяце
+        double monthMilsek = (average % yearsOfMilsek) / monthOfMilsek;
+        int month = (int) monthMilsek;
+
+
+        System.out.println("Средний возраст студентов: " + years + " лет, " + month + " месяцев.");
+    }
+}
